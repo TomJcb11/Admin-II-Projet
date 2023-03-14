@@ -1,5 +1,6 @@
 FROM ubuntu/bind9:latest
-MAINTAINER Louis Delbrouck <louisdelbrouck@gmail.com>
+
+RUN apt-get intall nano
 
 
 COPY named.conf /etc/bind/named.conf
