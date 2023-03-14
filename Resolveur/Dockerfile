@@ -1,0 +1,10 @@
+FROM ubuntu/bind9:latest
+MAINTAINER Louis Delbrouck <louisdelbrouck@gmail.com>
+
+
+COPY named.conf /etc/bind/named.conf
+
+EXPOSE 53
+
+CMD ["named", "-c", "/etc/bind/named.conf", "-g"]
+
