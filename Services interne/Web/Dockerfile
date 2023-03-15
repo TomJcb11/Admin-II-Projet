@@ -9,6 +9,7 @@ ADD ./www/ /var/www/
 ADD ./sites-available/ /etc/apache2/sites-available/
 
 COPY apache2.conf /etc/apache2/apache2.conf
+COPY ./www/index.html /var/www/html/index.html
 
 RUN a2ensite www.conf
 
