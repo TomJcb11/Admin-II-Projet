@@ -13,12 +13,6 @@ COPY etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
 
 COPY users /users
 
-
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y postfix
-
-
 RUN apt install -y dovecot-imapd dovecot-pop3d dovecot-core
 
 COPY start.sh /start.sh
@@ -28,5 +22,6 @@ RUN chmod +x /start.sh
 COPY etc/hosts /etc/hosts
 
 EXPOSE 456
+#ici, ajouter les ports de tous les protocoles
 
 CMD ["sh", "-c", "/start.sh"]
