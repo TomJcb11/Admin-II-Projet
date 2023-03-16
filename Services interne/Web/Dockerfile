@@ -1,4 +1,4 @@
-FROM ubuntu/apache2:latest
+FROM php:7.4-apache
 
 # Installez quelques outils utiles pour le débogage
 RUN apt-get update && apt full-upgrade -y \

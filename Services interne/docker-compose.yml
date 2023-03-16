@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+      db:
+      image: mysql:latest
+      environnement:
+        MYSQL_ROOT_PASSWORD: admin
+        MYSQL_DATABASE: DBadmin
+        MYSQL_USERNAME: admin
+        MYSQL_PASSWORD: admin
+      web:
+        build: ./Web
+        ports:
+          - "8080:80"
+        volumes:
+          -"./src:/var/www/html "
+
+      
+      
