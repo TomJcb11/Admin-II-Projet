@@ -1,19 +1,37 @@
-version: '3'
+version: "3"
 
 services:
-      db:
-      image: mysql:latest
-      environnement:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_DATABASE: DBadmin
-        MYSQL_USERNAME: admin
-        MYSQL_PASSWORD: admin
-      web:
-        build: ./Web
-        ports:
-          - "8080:80"
-        volumes:
-          -"./src:/var/www/html "
+  web:
+    build: ./Web
+    
+    volumes:
+      - ./web:/var/www/html
 
-      
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME : admin
+      MYSQL_PASSWORD : admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  resolver:
+    build: ./Resolveur
+    
+    volumes:
+      - ./bind:/etc/bind
+
+  soa:
+    build: ./SOA-interne
+  
+   
+    volumes:
+      - ./soa:/etc/bind
+
+  testpc:
+    build: ./Pctest
+        
       
