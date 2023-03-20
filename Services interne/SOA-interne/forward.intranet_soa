@@ -1,0 +1,18 @@
+$ORIGIN woodytoys.intranet
+@     IN     SOA    soa.woodytoys.intranet.     hostmaster.woodytoys.intranet. (
+                    2001062501 ; serial
+                    21600      ; refresh after 6 hours
+                    3600       ; retry after 1 hour
+                    604800     ; expire after 1 week
+                    86400 )    ; minimum TTL of 1 day
+
+      IN     NS     soa.woodytoys.intranet.
+
+      IN     MX     10     mail.woodytoys.intranet.
+
+resolv          IN     A       172.16.0.2
+soa             IN     A       172.16.0.1
+www             IN     A       172.16.0.4
+mail            IN     A       172.16.0.3
+
+
