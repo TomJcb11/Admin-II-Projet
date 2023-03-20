@@ -32,6 +32,6 @@ services:
       - ./soa:/etc/bind
 
   testpc:
-    build: ./Pctest
+    build: ./PCtest
         
       
