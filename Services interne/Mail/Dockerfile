@@ -1,27 +1,18 @@
+# on dit de quelle image on va se servire.
 FROM ubuntu:latest
 
+# on dit ce qu'on installer dans le conteneur. 
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y rsyslog
+
+# on instale nos service besoin.
 RUN apt-get install -y postfix
 RUN apt-get install -y dovecot-imapd dovecot-pop3d
 
-COPY etc/postfix/main.cf /etc/postfix/main.cf
-COPY etc/postfix/master.cf /etc/postfix/master.cf
+COPY dovecot.conf /etc/dovecot
+COPY main.cf /etc/postfix
 
-COPY etc/dovecot/conf.d/* /etc/dovecot/conf.d/
-COPY etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+EXPOSE 456 25 110 143
+# ??  SMTP  POP3  IMAP
 
-COPY users /users
-
-RUN apt install -y dovecot-imapd dovecot-pop3d dovecot-core
-
-COPY start.sh /start.sh
-
-RUN chmod +x /start.sh
-
-COPY etc/hosts /etc/hosts
-
-EXPOSE 456
-#ici, ajouter les ports de tous les protocoles
-
-CMD ["sh", "-c", "/start.sh"]
+#CMD ["/bin/bash", "-c"]

@@ -12,9 +12,13 @@ RUN apt-get update && \
 RUN apt update
 RUN apt install -y bind9 bind9utils bind9-doc dnsutils
 
-COPY named.conf /etc/bind/
-COPY woodytoys.lab.zone /etc/bind/
+COPY named.conf_soa /etc/bind/
+COPY woodytoys.forward.intranet_soa /etc/bind/
+COPY woodytoys.reverse.intranet_soa /etc/bind/
 
-EXPOSE 53/udp
+EXPOSE 53/TCP
+EXPOSE 53/UDP
 
 CMD ["named", "-g"]
+
+

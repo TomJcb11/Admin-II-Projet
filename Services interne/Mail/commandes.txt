@@ -1,0 +1,22 @@
+Pour créer le conteneur
+    $docker run -t -i --name mail mail
+
+Pour lancer le conteneur : 
+    docker start mail
+
+Pour aller dans le conteneur :
+    docker exec -ti mail /bin/bash
+
+Pour voir l'adresse IP du conteneur : 
+    docker inspect mail | grep IP
+
+------------------------------------------
+Pour lancer les services : 
+    service dovecot start
+    postfix start
+
+Pour créer un user : 
+    adduser TOTO
+
+Il se trouve : 
+    /home/ici

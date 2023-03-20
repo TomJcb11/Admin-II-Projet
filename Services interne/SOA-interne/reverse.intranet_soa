@@ -1,0 +1,16 @@
+$ORIGIN 0.16.172.in-addr.arpa.
+$TTL 86400
+@     IN     SOA    soa.woodytoys.intranet.     hostmaster.woodytoys.intranet. (
+                    2001062501 ; serial
+                    21600      ; refresh after 6 hours
+                    3600       ; retry after 1 hour
+                    604800     ; expire after 1 week
+                    86400 )    ; minimum TTL of 1 day
+
+        IN      NS      soa.woodytoys.intranet.
+
+2       IN      PTR     resolv.woodytoys.intranet.
+1       IN      PTR     soa.woodytoys.intranet.
+4       IN      PTR     www.woodytoys.intranet.
+3       IN      PTR     mail.woodytoys.intranet.
+
