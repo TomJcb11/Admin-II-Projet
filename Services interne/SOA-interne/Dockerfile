@@ -13,8 +13,8 @@ RUN apt update
 RUN apt install -y bind9 bind9utils bind9-doc dnsutils
 
 COPY named.conf_soa /etc/bind/
-COPY woodytoys.forward.intranet_soa /etc/bind/
-COPY woodytoys.reverse.intranet_soa /etc/bind/
+COPY forward.intranet_soa /etc/bind/
+COPY reverse.intranet_soa /etc/bind/
 
 EXPOSE 53/TCP
 EXPOSE 53/UDP

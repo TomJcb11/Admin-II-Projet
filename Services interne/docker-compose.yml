@@ -2,30 +2,42 @@ version: "3"
 
 services:
   web:
-    build: ./Web
+    depends_on:
+      - db
+
+    
+    build: ./ERP
+    ports:
+      - "8080:80"
     
     volumes:
       - ./web:/var/www/html
 
   db:
     image: mysql
+    ports:
+      - "3036:3036"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USERNAME : admin
       MYSQL_PASSWORD : admin
-    ports:
-      - "3306:3306"
+    
     volumes:
       - ./mysql:/var/lib/mysql
 
   resolver:
     build: ./Resolveur
+    ports:
+      - "53:53"
     
     volumes:
       - ./bind:/etc/bind
 
   soa:
     build: ./SOA-interne
+
+    ports:
+      - "53:53"
   
    
     volumes:
