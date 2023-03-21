@@ -39,12 +39,7 @@ services:
 
   soa:
     build: ./SOA-interne
-    container_name: SOA
-
-    ports:
-      - "53:53"
-  
-   
+    container_name: SOAs
     volumes:
       - ./soa:/etc/bind
 
