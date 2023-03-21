@@ -12,7 +12,7 @@ RUN apt-get update && \
 RUN apt update
 RUN apt install -y bind9 bind9utils bind9-doc dnsutils
 
-COPY named.conf_soa /etc/bind/
+COPY named.conf_soa /etc/bind/named.conf
 COPY forward.intranet_soa /etc/bind/
 COPY reverse.intranet_soa /etc/bind/
 
