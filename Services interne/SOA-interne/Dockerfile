@@ -16,8 +16,7 @@ COPY named.conf_soa /etc/bind/named.conf
 COPY forward.intranet_soa /etc/bind/
 COPY reverse.intranet_soa /etc/bind/
 
-EXPOSE 53/TCP
-EXPOSE 53/UDP
+EXPOSE 53/TCP 53/UDP
 
 CMD ["named", "-g"]
 
