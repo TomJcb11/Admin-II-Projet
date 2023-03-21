@@ -4,6 +4,7 @@ services:
   web:
     depends_on:
       - db
+    container_name: WEB
 
     
     build: ./ERP
@@ -14,7 +15,9 @@ services:
       - ./web:/var/www/html
 
   db:
-    image: mysql
+    build: ./DB
+    container_name: DB
+    restart : always
     ports:
       - "3036:3036"
     environment:
@@ -27,6 +30,7 @@ services:
 
   resolver:
     build: ./Resolveur
+    container_name: Resolveur
     ports:
       - "53:53"
     
@@ -35,6 +39,7 @@ services:
 
   soa:
     build: ./SOA-interne
+    container_name: SOA
 
     ports:
       - "53:53"
@@ -45,5 +50,14 @@ services:
 
   testpc:
     build: ./PCtest
+    container_name: TESTpc
+
+  mail:
+    build: ./Mail
+    container_name: Mail
+    ports:
+      - "25:25"
+      - "110:110"
+      - "993:993"
         
       

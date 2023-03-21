@@ -1,4 +1,4 @@
-zone "woodytoys.lab" IN {
+zone "woodytoys.intranet" IN {
         type forward;
         forwarders { 192.168.0.2; };
         forward only;
