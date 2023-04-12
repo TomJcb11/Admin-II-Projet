@@ -1,6 +1,32 @@
-Pour créer le conteneur
-    $docker run -t -i --name mail mail
+Pour créer une image avec un Dockerfile: 
+    docker build -t {mail} .
 
+Pour créer le conteneur (sh pour rentrer dedans):
+    docker run -p 25:25 -p 110:110 -p 143:143 -ti --name {Mail} mail sh 
+
+Une fois dans le conteneur:
+
+    postfix status 
+    postfix start
+
+    adduser {moi}
+
+    ifconfig    //172.17.0.2
+
+    telnet 172.17.0.2 25 
+
+    "Pour envoyé un mail test de moi à moi
+    mail from: {moi}
+    rcpt to: {moi}
+    data
+    test
+    .
+    quit
+    "
+
+
+
+------------------------------------------
 Pour lancer le conteneur : 
     docker start mail
 
