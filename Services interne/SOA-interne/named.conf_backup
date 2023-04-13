@@ -1,0 +1,3 @@
+include "/etc/bind/named.conf_soa";
+include "/etc/bind/forward.intranet_soa";
+include "/etc/bind/reverse.intranet_soa";
