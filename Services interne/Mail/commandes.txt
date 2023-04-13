@@ -9,7 +9,9 @@ Une fois dans le conteneur:
     postfix status 
     postfix start
 
-    adduser {moi}
+    service dovecot start
+
+    (adduser {moi} mais déjà ajouté normalement avec le Dockerfile)
 
     ifconfig    //172.17.0.2
 
