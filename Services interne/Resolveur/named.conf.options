@@ -13,6 +13,7 @@ options {
         recursion yes;
         pid-file "/var/run/named/named.pid";
         allow-transfer { none; };
+        
         dnssec-validation auto;
         
 };
