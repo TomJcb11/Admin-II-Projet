@@ -1,4 +1,4 @@
-$ORIGIN woodytoys.intranet
+$ORIGIN woodytoys.intranet.
 @     IN     SOA    soa.woodytoys.intranet.     hostmaster.woodytoys.intranet. (
                     2001062501 ; serial
                     21600      ; refresh after 6 hours
