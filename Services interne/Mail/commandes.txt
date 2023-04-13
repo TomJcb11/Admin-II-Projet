@@ -1,8 +1,8 @@
 Pour créer une image avec un Dockerfile: 
-    docker build -t {mail} .
+    docker build -t mailimg .
 
 Pour créer le conteneur (sh pour rentrer dedans):
-    docker run -p 25:25 -p 110:110 -p 143:143 -ti --name {Mail} mail sh 
+    docker run -p 25:25 -p 110:110 -p 143:143 -ti --name Mail mailimg sh 
 
 Une fois dans le conteneur:
 
@@ -25,8 +25,6 @@ Une fois dans le conteneur:
     .
     quit
     "
-
-
 
 ------------------------------------------
 Pour lancer le conteneur : 
