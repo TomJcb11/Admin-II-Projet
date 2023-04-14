@@ -1,15 +1,11 @@
-FROM ubuntu:latest
+FROM ubuntu/bind9:latest
 
-RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install net-tools bind9 bind9-utils dnsutils nano -y
+RUN apt-get update && \
+    apt-get install net-tools dnsutils nano -y 
 
-COPY ./named.conf /etc/bind/named.conf
-COPY named.conf.options /etc/bind/named.conf.options
-COPY named.conf.default-zones /etc/bind/named.conf.default-zones
-COPY named.conf.local /etc/bind/named.conf.local
+COPY named.conf /etc/bind/
 
-EXPOSE 53/TCP
-EXPOSE 53/UDP
 
-CMD ["named","-g"]
+EXPOSE 53/TCP 53/UDP
 
+CMD ["named", "-g"]
