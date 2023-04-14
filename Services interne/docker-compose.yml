@@ -1,58 +1,52 @@
-version: "3"
+version: "3.9"
 
 services:
   web:
-    depends_on:
-      - db
-    container_name: WEB
-
-    
-    build: ./ERP
+    container_name: ERP
+    build:
+      context: ./ERP
+      dockerfile: Dockerfile
     ports:
       - "8080:80"
-    
+    depends_on:
+      - db
     volumes:
-      - ./web:/var/www/html
+      - ./ERP/www:/var/www/html
 
   db:
-    build: ./DB
     container_name: DB
-    restart : always
-    ports:
-      - "3036:3036"
+    build:
+      context: ./BDD
+      dockerfile: Dockerfile
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USERNAME : admin
-      MYSQL_PASSWORD : admin
-    
-    volumes:
-      - ./mysql:/var/lib/mysql
 
   resolver:
-    build: ./Resolveur
-    container_name: Resolveur
-    ports:
-      - "53:53"
-    
-    volumes:
-      - ./bind:/etc/bind
-
+    container_name: Resolver
+    build:
+      context: ./Resolveur
+      dockerfile: Dockerfile
+   
   soa:
-    build: ./SOA-interne
-    container_name: SOAs
-    volumes:
-      - ./soa:/etc/bind
+    container_name: SOA_interne
+    build:
+      context: ./SOA-interne
+      dockerfile: Dockerfile
+    
 
   testpc:
-    build: ./PCtest
     container_name: TESTpc
+    build:
+      context: ./PCtest
+      dockerfile: Dockerfile
+    
 
   mail:
-    build: ./Mail
-    container_name: Mail
-    ports:
-      - "25:25"
-      - "110:110"
-      - "993:993"
+    container_name: Mail_interne
+    build:
+      context: ./Mail
+      dockerfile: Dockerfile
+   
         
       

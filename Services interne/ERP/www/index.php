@@ -1,46 +1,46 @@
+<!-- Page html de l'intranet -->
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>WoodyToys</title>
+</head>
+<body>
+<div>
+    <h3>Articles en ventes</h3>
+<?php
+$servername = "db";
+$username = "admin";
+$password = "root";
+$dbname = "woodytoys_db";
 
-<html>
-  <head>
-    <meta charset = "UTF-8">
-    <title>Site Web interne WoddyToys</title>
-  </head>
-  
-  <body>
-    <h1>Site Web interne WoddyToys</h1>
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-  <?php
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    $servername = '172.16.0.5:3306';
-    $username = 'admin';
-    $password = "admin";
-    $dbname = 'woodytoys';
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Perform SQL query
+$sql = "SELECT * FROM articles";
+$result = $conn->query($sql);
 
-    $result= $conn->query("SELECT * FROM articles");
-
-    while ($row = $result->fetch()) {
-    echo $row['nom'] . " - " . $row['prix'] . "€ <br />\n";
+// Print results
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "Nom: " . $row["nom"] . " - Prix: " . $row["prix"] . "<br>";
     }
+} else {
+    echo "0 results";
+}
 
-  if (isset($_POST['submit'])){
-    $article = $_POST["article"];
-    $prix = $_POST["prix"];
+$conn->close();
+?>
+</div>
 
-    $insert = "INSERT INTO articles VALUES ('$article', $prix)";
-    $conn->exec($insert);
-    echo "<meta http-equiv='refresh' content='0'>";
-  }
 
-  $conn = null;
-  ?>
-    
-
-      
-      
-    
-  </body>
-
+</body>
 </html>
-

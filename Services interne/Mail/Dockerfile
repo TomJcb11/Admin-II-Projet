@@ -24,3 +24,5 @@ EXPOSE 25
 EXPOSE 110 
 EXPOSE 143
 # SMTP  POP3  IMAP
+
+CMD service postfix start && service dovecot start && tail -f /dev/null
