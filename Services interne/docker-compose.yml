@@ -13,6 +13,10 @@ services:
     volumes:
       - ./ERP/www:/var/www/html
 
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.4 
+
   db:
     container_name: DB
     build:
@@ -27,12 +31,18 @@ services:
     build:
       context: ./Resolveur
       dockerfile: Dockerfile
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.2
    
   soa:
     container_name: SOA_interne
     build:
       context: ./SOA-interne
       dockerfile: Dockerfile
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.1
     
 
   testpc:
@@ -40,6 +50,9 @@ services:
     build:
       context: ./PCtest
       dockerfile: Dockerfile
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.10 
     
 
   mail:
@@ -47,6 +60,32 @@ services:
     build:
       context: ./Mail
       dockerfile: Dockerfile
-   
-        
-      
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.3
+
+
+# ================== NETWORK ==================
+networks:
+  ZoneInterne:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+
+# networks : 
+#   LAN :
+#     driver : bridge
+#     ipam : 
+#       driver : default
+#       config : 
+#         - subnet : 192.168.0.0/24
+
+# networks : 
+#   DMZ :
+#     driver : bridge
+#     ipam : 
+#       driver : default
+#       config : 
+#         - subnet : 172.16.1.0/24
