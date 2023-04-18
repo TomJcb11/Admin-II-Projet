@@ -9,4 +9,4 @@ RUN apt-get install -y telnet
 
 ADD resolv.conf /etc/resolv.conf.override
 
-CMD cp /etc/resolv.conf.override /etc/resolv.conf tail -f /dev/null
+CMD cp /etc/resolv.conf.override /etc/resolv.conf && tail -f /dev/null
