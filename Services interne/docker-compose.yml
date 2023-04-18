@@ -36,7 +36,7 @@ services:
             ipv4_address : 172.16.0.2
    
   soa:
-    container_name: SOA_interne
+    container_name: SOA
     build:
       context: ./SOA-interne
       dockerfile: Dockerfile

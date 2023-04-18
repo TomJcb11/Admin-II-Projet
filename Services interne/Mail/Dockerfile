@@ -12,6 +12,7 @@ RUN apt-get install -y dovecot-core
 
 #pour les test ;port, IP, mail :
 RUN apt-get install -y nmap
+RUN apt-get install -y nano
 RUN apt-get install -y net-tools
 RUN apt-get install -y telnet
 RUN adduser contact

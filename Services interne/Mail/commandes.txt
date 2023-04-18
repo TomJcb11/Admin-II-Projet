@@ -31,10 +31,10 @@ Pour lancer le conteneur :
     docker start mail
 
 Pour aller dans le conteneur :
-    docker exec -ti mail /bin/bash
+    docker exec -it mail /bin/bash
 
 Pour voir l'adresse IP du conteneur : 
-    docker inspect Mail | grep "IPAddress"
+    docker inspect Mail | grep "IPA"
 
 ------------------------------------------
 Pour lancer les services : 
