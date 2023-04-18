@@ -60,8 +60,6 @@ services:
     build:
       context: ./Mail
       dockerfile: Dockerfile
-    dns:
-       - 172.16.0.2  
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.3
