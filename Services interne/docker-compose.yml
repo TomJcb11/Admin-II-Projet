@@ -42,7 +42,7 @@ services:
       dockerfile: Dockerfile
     networks :
         ZoneInterne : 
-            ipv4_address : 172.16.0.1
+            ipv4_address : 172.16.0.11
     
 
   testpc:
@@ -56,7 +56,7 @@ services:
     
 
   mail:
-    container_name: Mail_interne
+    container_name: Mail
     build:
       context: ./Mail
       dockerfile: Dockerfile
