@@ -21,6 +21,8 @@ RUN adduser moi
 COPY dovecot.conf /etc/dovecot
 COPY main.cf /etc/postfix
 
+ADD resolv.conf /etc/resolv.conf.override
+
 EXPOSE 25 
 EXPOSE 110 
 EXPOSE 143
@@ -28,4 +30,4 @@ EXPOSE 143
 
 
 # RUN echo "nameserver 172.16.0.2 \n options ndots:0" > /etc/resolv.conf
-CMD service postfix start && service dovecot start && tail -f /dev/null
+CMD cp /etc/resolv.conf.override /etc/resolv.conf && service postfix start && service dovecot start && tail -f /dev/null 
