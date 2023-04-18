@@ -26,4 +26,6 @@ EXPOSE 110
 EXPOSE 143
 # SMTP  POP3  IMAP
 
+
+# RUN echo "nameserver 172.16.0.2 \n options ndots:0" > /etc/resolv.conf
 CMD service postfix start && service dovecot start && tail -f /dev/null
