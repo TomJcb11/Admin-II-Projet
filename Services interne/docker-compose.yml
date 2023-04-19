@@ -31,6 +31,7 @@ services:
     build:
       context: ./Resolveur
       dockerfile: Dockerfile
+        
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.2
@@ -40,6 +41,7 @@ services:
     build:
       context: ./SOA-interne
       dockerfile: Dockerfile
+
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.11

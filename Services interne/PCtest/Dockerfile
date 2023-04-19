@@ -7,6 +7,6 @@ RUN apt-get install -y net-tools
 RUN apt-get install -y nano
 RUN apt-get install -y telnet
 
-ADD resolv.conf /etc/resolv.conf.override
+ADD /resolv.conf /etc/resolv.conf.override
 
 CMD cp /etc/resolv.conf.override /etc/resolv.conf && tail -f /dev/null

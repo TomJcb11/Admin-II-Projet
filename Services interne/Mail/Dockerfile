@@ -21,7 +21,7 @@ RUN adduser moi
 COPY dovecot.conf /etc/dovecot
 COPY main.cf /etc/postfix
 
-ADD resolv.conf /etc/resolv.conf.override
+ADD /resolv.conf /etc/resolv.conf.override
 
 EXPOSE 25 
 EXPOSE 110 
