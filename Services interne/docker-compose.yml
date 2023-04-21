@@ -12,6 +12,8 @@ services:
       - db
     volumes:
       - ./ERP/www:/var/www/html
+    dns : 
+      - 172.16.0.2
 
     networks :
         ZoneInterne : 
@@ -41,7 +43,8 @@ services:
     build:
       context: ./SOA-interne
       dockerfile: Dockerfile
-
+    dns : 
+      - 172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.11
@@ -52,6 +55,8 @@ services:
     build:
       context: ./PCtest
       dockerfile: Dockerfile
+    dns : 
+      -  172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.10 
@@ -62,6 +67,8 @@ services:
     build:
       context: ./Mail
       dockerfile: Dockerfile
+    dns: 
+      - 172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.3

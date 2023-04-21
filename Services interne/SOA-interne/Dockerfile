@@ -7,9 +7,9 @@ COPY named.conf /etc/bind/
 COPY forward.intranet_soa /etc/bind/
 COPY reverse.intranet_soa /etc/bind/
 
-ADD /resolv.conf /etc/resolv.conf.override
+ADD resolv.conf /etc/resolv.conf.override
 
 EXPOSE 53/TCP 53/UDP
 
-# CMD cp /etc/resolv.conf.override /etc/resolv.conf
-CMD [ "named", "-g" ]
+CMD cp /etc/resolv.conf.override /etc/resolv.conf && named -g
+#CMD [ "named", "-g" ]

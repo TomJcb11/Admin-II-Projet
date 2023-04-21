@@ -6,6 +6,7 @@ RUN apt-get install -y iputils-ping
 RUN apt-get install -y net-tools
 RUN apt-get install -y nano
 RUN apt-get install -y telnet
+RUN apt-get install -y links
 
 ADD /resolv.conf /etc/resolv.conf.override
 
