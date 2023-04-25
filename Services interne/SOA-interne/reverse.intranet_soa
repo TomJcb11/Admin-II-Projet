@@ -9,8 +9,8 @@ $TTL 86400
 
         IN      NS      soa.woodytoys.intranet.
 
-2.0.16.172.in-addr.arpa.       IN      PTR     resolv.woodytoys.intranet.
-11.0.16.172.in-addr.arpa.      IN      PTR     soa.woodytoys.intranet.
-4.0.16.172.in-addr.arpa.       IN      PTR     www.woodytoys.intranet.
-3.0.16.172.in-addr.arpa.       IN      PTR     mail.woodytoys.intranet.
+2      IN      PTR     resolv.woodytoys.intranet.
+11     IN      PTR     soa.woodytoys.intranet.
+4      IN      PTR     www.woodytoys.intranet.
+3      IN      PTR     mail.woodytoys.intranet.
 
