@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 
 # on dit ce qu'on installer dans le conteneur. 
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update --fix-missing && apt-get -y upgrade
 
 # on installe nos service besoin.
 RUN apt-get install -y postfix

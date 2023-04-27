@@ -6,8 +6,6 @@ services:
     build:
       context: ./ERP
       dockerfile: Dockerfile
-    ports:
-      - "8080:80"
     depends_on:
       - db
     volumes:
@@ -27,6 +25,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.9
 
   resolver:
     container_name: Resolver
