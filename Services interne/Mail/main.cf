@@ -11,8 +11,8 @@ readme_directory = no
 compatibility_level = 3.6
 
 # Define server identity
-myhostname = mail.woodytoys.intranet
-mydomain = woodytoys.intranet
+myhostname = mail.intranet.woodytoys
+mydomain = intranet.woodytoys
 
 # Outgoing mail must use this as source address domain
 myorigin = $mydomain
@@ -27,7 +27,7 @@ smtpd_relay_restrictions = permit_mynetworks,reject
 
 #Log configuration
 maillog_file=/var/log/postfix.log
-debug_peer_list = woodytoys.intranet
+debug_peer_list = intranet.woodytoys
 debug_peer_level = 5
 
 inet_protocols = all
