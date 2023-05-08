@@ -2,7 +2,11 @@
 FROM ubuntu:latest
 
 # on dit ce qu'on installer dans le conteneur. 
+<<<<<<< HEAD
 RUN apt-get update && apt-get -y upgrade && apt-get update --fix-missing
+=======
+RUN apt-get update --fix-missing && apt-get -y upgrade
+>>>>>>> 1fddc48ffa252e9b425656e8a888e642bc194aa6
 
 # on installe nos service besoin.
 RUN apt-get install -y postfix
@@ -12,6 +16,7 @@ RUN apt-get install -y dovecot-core
 
 #pour les test ;port, IP, mail :
 RUN apt-get install -y nmap
+RUN apt-get install -y nano
 RUN apt-get install -y net-tools
 RUN apt-get install -y telnet
 RUN adduser contact
@@ -20,9 +25,13 @@ RUN adduser moi
 COPY dovecot.conf /etc/dovecot
 COPY main.cf /etc/postfix
 
+ADD /resolv.conf /etc/resolv.conf.override
+
 EXPOSE 25 
 EXPOSE 110 
 EXPOSE 143
 # SMTP  POP3  IMAP
 
-CMD service postfix start && service dovecot start && tail -f /dev/null
+
+# RUN echo "nameserver 172.16.0.2 \n options ndots:0" > /etc/resolv.conf
+CMD cp /etc/resolv.conf.override /etc/resolv.conf && service postfix start && service dovecot start && tail -f /dev/null 

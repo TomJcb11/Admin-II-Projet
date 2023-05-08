@@ -6,12 +6,16 @@ services:
     build:
       context: ./ERP
       dockerfile: Dockerfile
-    ports:
-      - "8080:80"
     depends_on:
       - db
     volumes:
       - ./ERP/www:/var/www/html
+    dns : 
+      - 172.16.0.2
+
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.4 
 
   db:
     container_name: DB
@@ -21,18 +25,30 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.9
 
   resolver:
     container_name: Resolver
     build:
       context: ./Resolveur
       dockerfile: Dockerfile
+        
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.2
    
   soa:
-    container_name: SOA_interne
+    container_name: SOA
     build:
       context: ./SOA-interne
       dockerfile: Dockerfile
+    dns : 
+      - 172.16.0.2
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.11
     
 
   testpc:
@@ -40,13 +56,48 @@ services:
     build:
       context: ./PCtest
       dockerfile: Dockerfile
+    dns : 
+      -  172.16.0.2
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.10 
     
 
   mail:
-    container_name: Mail_interne
+    container_name: Mail
     build:
       context: ./Mail
       dockerfile: Dockerfile
-   
-        
-      
+    dns: 
+      - 172.16.0.2
+    networks :
+        ZoneInterne : 
+            ipv4_address : 172.16.0.3
+
+
+# ================== NETWORK ==================
+networks:
+  ZoneInterne:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+
+
+# networks : 
+#   LAN :
+#     driver : bridge
+#     ipam : 
+#       driver : default
+#       config : 
+#         - subnet : 192.168.0.0/24
+
+# networks : 
+#   DMZ :
+#     driver : bridge
+#     ipam : 
+#       driver : default
+#       config : 
+#         - subnet : 172.16.1.0/24
+# 

@@ -5,7 +5,9 @@ RUN apt-get update && \
 
 COPY named.conf /etc/bind/
 
+ADD resolv.conf /etc/resolv.conf.override
 
 EXPOSE 53/TCP 53/UDP
 
-CMD ["named", "-g"]
+CMD cp /etc/resolv.conf.override /etc/resolv.conf && named -g
+#CMD ["named", "-g"]

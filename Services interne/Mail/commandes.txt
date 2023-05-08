@@ -31,10 +31,10 @@ Pour lancer le conteneur :
     docker start mail
 
 Pour aller dans le conteneur :
-    docker exec -ti mail /bin/bash
+    docker exec -it mail /bin/bash
 
 Pour voir l'adresse IP du conteneur : 
-    docker inspect mail | grep IP
+    docker inspect Mail | grep "IPA"
 
 ------------------------------------------
 Pour lancer les services : 
@@ -46,3 +46,11 @@ Pour créer un user :
 
 Il se trouve : 
     /home/ici
+
+------------------------------------------
+
+Up sans les logs : 
+    docker-compose up -d 
+
+voir les logs : 
+    docker logs Mail

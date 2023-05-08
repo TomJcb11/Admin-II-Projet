@@ -41,7 +41,7 @@ zone "127.in-addr.arpa" IN {
         notify no;
 };
 
-zone "woodytoys.intranet" IN {
+zone "intranet.woodytoys" IN {
         type forward;
         forwarders { 172.17.0.2; 
         };

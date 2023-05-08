@@ -1,16 +1,16 @@
-$ORIGIN woodytoys.intranet.
-@     IN     SOA    soa.woodytoys.intranet.     hostmaster.woodytoys.intranet. (
+$ORIGIN intranet.woodytoys.
+@     IN     SOA    soa.intranet.woodytoys.     hostmaster.intranet.woodytoys. (
                     2001062501 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
                     604800     ; expire after 1 week
                     86400 )    ; minimum TTL of 1 day
 
-      IN     NS     soa.woodytoys.intranet.
+      IN     NS     soa.intranet.woodytoys.
 
-soa             IN     A       172.17.0.2
-resolv          IN     A       172.17.0.4
-www             IN     A       172.17.0.6
-mail            IN     A       172.17.0.8
+soa             IN     A       172.16.0.11
+resolv          IN     A       172.16.0.2
+www             IN     A       172.16.0.4 
+mail            IN     A       172.16.0.3
 
 
