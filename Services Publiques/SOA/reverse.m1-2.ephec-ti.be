@@ -11,4 +11,5 @@ $TTL 86400
 
 228      IN      PTR     ns.m1-2.ephec-ti.be.
 228      IN      PTR     www.m1-2.ephec-ti.be.
-228       IN      PTR     mail.m1-2.ephec-ti.be.
+228      IN      PTR     mail.m1-2.ephec-ti.be.
+228      IN      PTR     b2b.m1-2.ephec-ti.be.
