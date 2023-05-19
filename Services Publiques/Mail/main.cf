@@ -1,0 +1,36 @@
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 3.6 on
+# fresh installs.
+compatibility_level = 3.6
+
+# Define server identity
+myhostname = mail.m1-2.ephec-ti.be
+mydomain = m1-2.ephec-ti.be
+
+# Outgoing mail must use this as source address domain
+myorigin = $mydomain
+# Accepting local mail delivery for those destinations
+mydestination = $myhostname localhost.$mydomain localhost $mydomain
+
+smtpd_banner = $myhostname ESMTP $mail_name
+
+# Network from which we accept smtp connexions
+mynetworks = 172.16.0.0/24 127.0.0.0/8 [::1]/128
+smtpd_relay_restrictions = permit_mynetworks,reject
+
+#Log configuration
+maillog_file=/var/log/postfix.log
+debug_peer_list = m1-2.ephec-ti.be
+debug_peer_level = 5
+
+inet_protocols = all
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
