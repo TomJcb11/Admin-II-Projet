@@ -22,6 +22,11 @@
         </tr>
         
         <?php
+        $servername = '172.16.0.9';
+        $username = "admin";
+        $password = "root";
+        $dbname = "woodytoys_db";
+        
         $conn = new mysqli($servername, $username, $password, $dbname);
 
         // Vérifier la connexion à la base de données
@@ -49,34 +54,3 @@
 </body>
 </html>
 <!-- traitement_formulaire.php -->
-<?php
-// Connexion à la base de données (remplacez les informations par celles de votre base de données)
-$servername = 172.16.0.9;
-$username = "admin";
-$password = "root";
-$dbname = "woodytoys_db";
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifier la connexion à la base de données
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
-}
-
-// Récupérer les données du formulaire
-$nom = $_POST['nom'];
-$email = $_POST['email'];
-
-// Insérer les données dans la base de données
-$sql = "INSERT INTO utilisateurs (nom, email) VALUES ('$nom', '$email')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Données insérées avec succès.";
-} else {
-    echo "Erreur lors de l'insertion des données : " . $conn->error;
-}
-
-// Fermer la connexion à la base de données
-$conn->close();
-?>
