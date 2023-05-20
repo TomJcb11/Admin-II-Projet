@@ -30,7 +30,7 @@ $result = $conn->query($sql);
 
 // Print results
 if ($result->num_rows > 0) {
-    echo "<table>";
+    echo "<table border='1'>";
     echo "<tr><th>Nom</th><th>Prix</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
