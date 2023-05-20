@@ -88,7 +88,7 @@ services:
       - "10.0.0.4:53:53/udp" 
     networks:
       ZoneInterne:
-        ipv4_address : 172.16.0.14
+        ipv4_address : 172.16.0.13
 
   web_pub:
     container_name: web_publique
@@ -102,7 +102,7 @@ services:
       - "443:443"
     networks:
       ZoneInterne:
-        ipv4_address : 172.16.0.15
+        ipv4_address : 172.16.0.14
 
    
 # ================== NETWORK ==================
