@@ -1,8 +1,9 @@
 version: "3.9"
 
+# ================== SERVICES INTERNES ==================
 services:
   web:
-    container_name: ERP
+    container_name: ERP_interne
     build:
       context: "./Services_interne/ERP"
       dockerfile: Dockerfile
@@ -10,15 +11,15 @@ services:
       - db
     volumes:
       - ./Services_interne/ERP/www:/var/www/html
-    dns : 
-      - 172.16.0.2
 
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.4 
+    dns : 
+      - 172.16.0.2
 
   db:
-    container_name: DB
+    container_name: DB_interne
     build:
       context: "./Services_interne/BDD"
       dockerfile: Dockerfile
@@ -30,9 +31,11 @@ services:
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.9
+    dns :
+      - 172.16.0.2
 
   resolver:
-    container_name: Resolver
+    container_name: Resolver_interne
     build:
       context: "./Services_interne/Resolveur"
       dockerfile: Dockerfile
@@ -40,42 +43,43 @@ services:
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.2
-   
+    dns :
+      - 172.16.0.2
   soa:
-    container_name: SOA
+    container_name: soa_interne
     build:
       context: "./Services_interne/SOA-interne"
       dockerfile: Dockerfile
-    dns : 
-      - 172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.11
-    
+    dns : 
+      - 172.16.0.2
 
   testpc:
-    container_name: TESTpc
+    container_name: PC_interne
     build:
       context: "./Services_interne/PCtest"
       dockerfile: Dockerfile
-    dns : 
-      -  172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.10 
+    dns : 
+      -  172.16.0.2
     
 
   mail:
-    container_name: Mail
+    container_name: Mail_interne
     build:
       context: "./Services_interne/Mail"
       dockerfile: Dockerfile
-    dns: 
-      - 172.16.0.2
     networks :
         ZoneInterne : 
             ipv4_address : 172.16.0.3
+    dns: 
+      - 172.16.0.2
 
+# ================== SERVICES PUBLIQUES ==================
   soa_pub:
     container_name: soa_publique
     build: 
@@ -83,7 +87,24 @@ services:
       dockerfile: Dockerfile
     networks:
       DMZ:
-        ipv4_address : 172.16.1.3 
+        ipv4_address : 172.16.1.3
+    dns:
+      - 172.16.1.2
+
+  web_pub:
+    container_name: ERP_publique
+    build:
+      context: "./Services_Publiques/web"
+      dockerfile: Dockerfile
+    volumes:
+      - ./Services_Publiques/ERP/www:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      DMZ:
+        ipv4_address : 172.16.1.4
+    dns:
+      - 172.16.1.2
       
 # ================== NETWORK ==================
 networks:
@@ -99,14 +120,3 @@ networks:
       driver : default
       config : 
         - subnet : 172.16.1.0/24
-
-# networks : 
-#   LAN :
-#     driver : bridge
-#     ipam : 
-#       driver : default
-#       config : 
-#         - subnet : 192.168.0.0/24
-
-
-  
