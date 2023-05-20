@@ -4,7 +4,8 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nano -y
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt-get install -y iputils-ping
-
+RUN apt-get install certbot -y
+RUN certbot certonly --webroot -w /var/www/html/www -d www.m1-2.ephec-ti.be -y
 
 COPY ./config/sites-availables/b2b.conf /etc/apache2/sites-available/b2b.conf
 COPY ./config/sites-availables/www.conf /etc/apache2/sites-available/www.conf
