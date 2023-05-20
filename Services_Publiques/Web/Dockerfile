@@ -3,8 +3,7 @@ FROM php:7.4-apache
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nano -y
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get install -y iputils-ping
-RUN apt-get install certbot -y
+RUN apt-get install -y certbot python3-certbot-apache
 
 
 COPY ./config/sites-availables/b2b.conf /etc/apache2/sites-available/b2b.conf
