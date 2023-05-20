@@ -13,7 +13,7 @@ COPY ./config/apache2.conf /etc/apache2/apache2.conf
 COPY ./sites/www /var/www/html/www
 COPY ./sites/b2b /var/www/html/b2b
 
-RUN certbot certonly --webroot -w /var/www/html/www -d www.m1-2.ephec-ti.be --non-interactive --agree-tos --email l.delbrouck@students.ephec.be
+RUN certbot --apache --non-interactive --agree-tos --email l.delbrouck@students.ephec.be --domains www.m1-2.ephec-ti.be
 RUN a2ensite b2b.conf
 RUN a2ensite www.conf
 
