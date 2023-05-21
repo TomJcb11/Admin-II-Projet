@@ -5,9 +5,9 @@ RUN apt-get install nano -y
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt install -y openssl certbot python3-certbot-apache
 
-RUN openssl genrsa -out /etc/ssl/certs/www.key 2048
-RUN openssl req -new -sha256 -key /etc/ssl/certs/www.key -out /etc/ssl/certs/www.csr -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.m1-2.ephec-ti.be"
-RUN openssl x509 -req -days 365 -in /etc/ssl/certs/www.csr -signkey /etc/ssl/certs/www.key -out /etc/ssl/certs/www.crt
+RUN openssl genrsa -out /etc/ssl/certs/private.key 2048
+RUN openssl req -sha256 -new -key /etc/ssl/certs/private.key -out /etc/ssl/certs/csr.pem -subj "/C=BE/ST=Bruxelles/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.m1-2.ephec-ti.be"
+RUN openssl x509 -req -days 365 -in /etc/ssl/certs/csr.pem -signkey /etc/ssl/certs/private.key -out /etc/ssl/certs/cert.pem
 
 
 
