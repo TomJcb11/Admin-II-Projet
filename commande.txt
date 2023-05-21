@@ -1,0 +1,6 @@
+openssl genrsa -des3 -out /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key 2048 
+openssl req -new -key /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr
+openssl x509 -req -days 365 -in  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr -signkey  /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key -out  /etc/postfix/ssl/mail.l2-6.ephec-ti.be.crt
+openssl rsa -in /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key -out /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key.nopass
+mv /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key.nopass /etc/postfix/ssl/mail.l2-6.ephec-ti.be.key
+openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out /etc/postfix/ssl/cacert.pem -days 3650
