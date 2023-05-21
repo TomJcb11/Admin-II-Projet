@@ -16,7 +16,7 @@ COPY ./sites/b2b /var/www/b2b.m1-2.ephec-ti.be
 
 RUN openssl genrsa -out /etc/ssl/certs/private.key 2048
 RUN openssl req -sha256 -new -key /etc/ssl/certs/private.key -out /etc/ssl/certs/csr.pem -subj "/C=BE/ST=Bruxelles/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.m1-2.ephec-ti.be"
-RUN certbot certonly --webroot -w /var/www/www.m1-2.ephec-ti.be -d www.m1-2.ephec-ti.be --email l.delbrouck@students.ephec.be --agree-tos
+
 
 RUN a2enmod ssl
 RUN a2ensite b2b.m1-2.ephec-ti.be.conf
