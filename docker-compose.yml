@@ -100,26 +100,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    volumes:
-      - ./Services_Publiques/Web/letsencrypt:/etc/letsencrypt
     networks:
       ZoneInterne:
         ipv4_address : 172.16.0.14
 
-  certbot:
-    container_name: Certbot
-    image: certbot/certbot:latest
-    volumes:
-      - ./Services_Publiques/Web/letsencrypt:/etc/letsencrypt
-    command: certbot certonly --webroot /var/www/html/www -d www.m1-2.ephec-ti.be --agree-tos --email l.delbrouck@students.ephec.be
-
-    depends_on:
-      - web_pub
-      - soa_pub
-    networks:
-      ZoneInterne:
-        ipv4_address : 172.16.0.15
-   
+  
 # ================== NETWORK ==================
 networks:
   ZoneInterne:
