@@ -103,7 +103,20 @@ services:
     networks:
       ZoneInterne:
         ipv4_address : 172.16.0.14
-
+    
+    mail_pub:
+      container_name: mail_publique
+      build:
+        context: ./Services_Publiques/Mail
+        dockerfile : Dockerfile
+      ports:
+        - "465:465"
+        - "110:110"
+        - "587:587"
+        - "143:143"
+      networks:
+        ZoneInterne:
+          ipv4_address : 172.16.0.15
   
 # ================== NETWORK ==================
 networks:
