@@ -18,7 +18,7 @@ EXPOSE 143
 EXPOSE 587
 EXPOSE 465
 
-RUN openssl genrsa -des3 -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key 2048 
+RUN openssl genrsa -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key 2048 
 RUN openssl req -new -key /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=mail.m1-2.ephec-ti.be"
 RUN openssl x509 -req -days 365 -in  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr -signkey  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.crt
 RUN openssl rsa -in /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key.nopass
