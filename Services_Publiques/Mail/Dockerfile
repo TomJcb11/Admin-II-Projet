@@ -23,6 +23,6 @@ RUN openssl req -new -key /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out /etc/p
 RUN openssl x509 -req -days 365 -in  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr -signkey  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.crt
 RUN openssl rsa -in /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key.nopass
 RUN mv /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key.nopass /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key
-RUN openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out /etc/postfix/ssl/cacert.pem -days 3650
+RUN openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out /etc/postfix/ssl/cacert.pem -days 3650 -passout pass:adminii
 
 CMD service postfix start && service dovecot start && tail -f /dev/null
