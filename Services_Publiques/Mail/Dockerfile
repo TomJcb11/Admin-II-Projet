@@ -9,7 +9,7 @@ RUN apt install nano -y
 COPY dovecot.conf /etc/dovecot/
 COPY main.cf /etc/postfix/
 COPY master.cf /etc/postfix/
-
+RUN mkdir -p /etc/postfix/ssl/
 RUN apt install certbot -y
 RUN apt install openssl -y
 
