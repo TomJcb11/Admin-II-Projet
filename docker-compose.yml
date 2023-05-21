@@ -103,7 +103,21 @@ services:
     networks:
       ZoneInterne:
         ipv4_address : 172.16.0.14
-
+  certbot:
+    container_name: Certbot
+    image: certbot/certbot
+    volumes:
+      - ./Services_Publiques/Web/sites/www:/var/www/html
+    command: >
+      sh -c "certbot certonly --webroot -w /var/www/html/www -d www.m1-2.ephec-ti.be
+      --agree-tos --email l.delbrouck@students.ephec.be --non-interactive --force-renewal &&
+      cp /etc/letsencrypt/live/www.m1-2.ephec-ti.be/fullchain.pem /certs/fullchain.pem &&
+      cp /etc/letsencrypt/live/www.m1-2.ephec-ti.be/privkey.pem /certs/privkey.pem"
+    depends_on:
+      - web_pub
+    networks:
+      ZoneInterne:
+        ipv4_address : 172.16.0.15
    
 # ================== NETWORK ==================
 networks:

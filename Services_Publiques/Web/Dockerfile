@@ -12,7 +12,8 @@ COPY ./config/apache2.conf /etc/apache2/apache2.conf
 COPY ./sites/www /var/www/html/www
 COPY ./sites/b2b /var/www/html/b2b
 
-RUN certbot --apache --non-interactive --agree-tos --email l.delbrouck@students.ephec.be --domains www.m1-2.ephec-ti.be
+COPY --from=certbot /certs/fullchain.pem /etc/apache2/certs/fullchain.pem
+COPY --from=certbot /certs/privkey.pem /etc/apache2/certs/privkey.pem
 RUN a2ensite b2b.conf
 RUN a2ensite www.conf
 
