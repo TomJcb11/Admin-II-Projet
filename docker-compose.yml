@@ -105,7 +105,7 @@ services:
         ipv4_address : 172.16.0.14
   certbot:
     container_name: Certbot
-    image: certbot/certbot:latest
+    image: docker.io/certbot/certbot:latest
     volumes:
       - ./Services_Publiques/Web/sites/www:/var/www/html
     command: 
