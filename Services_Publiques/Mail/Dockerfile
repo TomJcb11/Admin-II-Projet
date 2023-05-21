@@ -31,5 +31,7 @@ RUN openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out /etc/postfix
 
 COPY ./certbot/fullchain.pem /etc/dovecot/ssl/
 COPY ./certbot/privkey.pem /etc/dovecot/ssl/
+COPY ./certbot/fullchain.pem /etc/postfix/ssl/
+COPY ./certbot/privkey.pem /etc/postfix/ssl/
 
 CMD service postfix start && service dovecot start && tail -f /dev/null
