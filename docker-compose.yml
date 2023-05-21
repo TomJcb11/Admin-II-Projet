@@ -114,6 +114,7 @@ services:
       - "110:110"
       - "587:587"
       - "143:143"
+      - "993:993"
     networks:
       ZoneInterne:
         ipv4_address : 172.16.0.15
