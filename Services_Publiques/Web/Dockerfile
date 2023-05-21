@@ -5,6 +5,9 @@ RUN apt-get install nano -y
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt install -y openssl certbot python3-certbot-apache
 
+RUN openssl genrsa -out /etc/ssl/certs/private.key 2048
+RUN openssl req -sha256 -new -key /etc/ssl/certs/private.key -out /etc/ssl/certs/csr.pem -subj "/C=BE/ST=Bruxelles/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.m1-2.ephec-ti.be"
+RUN openssl x509 -req -days 365 -in /etc/ssl/certs/csr.pem -signkey /etc/ssl/certs/private.key -out /etc/ssl/certs/www.crt
 
 
 
@@ -13,9 +16,6 @@ COPY ./config/sites-availables/www.m1-2.ephec-ti.be.conf /etc/apache2/sites-avai
 COPY ./config/apache2.conf /etc/apache2/apache2.conf
 COPY ./sites/www /var/www/www.m1-2.ephec-ti.be
 COPY ./sites/b2b /var/www/b2b.m1-2.ephec-ti.be
-
-RUN openssl genrsa -out /etc/ssl/certs/private.key 2048
-RUN openssl req -sha256 -new -key /etc/ssl/certs/private.key -out /etc/ssl/certs/csr.pem -subj "/C=BE/ST=Bruxelles/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.m1-2.ephec-ti.be"
 
 
 RUN a2enmod ssl
