@@ -17,7 +17,7 @@ COPY ./config/apache2.conf /etc/apache2/apache2.conf
 
 
 COPY ./certbot/fullchain.pem /etc/ssl/certs/
-COPY ./cerbot/privkey.pem /etc/ssl/certs/ 
+COPY ./certbot/privkey.pem /etc/ssl/certs/ 
 
 RUN a2enmod ssl
 RUN a2ensite b2b.m1-2.ephec-ti.be.conf
