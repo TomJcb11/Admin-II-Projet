@@ -24,5 +24,5 @@ done
 
 
 @      IN     TXT    "v=spf1 ip4:51.144.126.228 -all";
-
+m1-2._domainkey IN TXT "v=DKIM1; h=rsa-sha256; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAslKweyURns2ydJP4fNFtOclEEsLNxMpcsJKoRWPavcPfypBfjpO6IHwi4NWUtQJywFEEZKF1zK5rOmB4f8GTUpsQ48I143QGIrIqNUTOswKkxakLxYl0vr/Ea2/arIURyvrj+/0ccThTopIoSKHmc5ZRgAZLBB/YCMi3Qc6tw40gSzg6O6qEYplN65c1CHF1m0lJJyJqO/druOjCzOPSxVCMoZw8wqc+9g9/xpyUEJ6yKOfWUfh4juJXn68LzShoM9w5aNI9M0qgCN+Pd8NoDZYtnSvQZ/YS6kJNiE0oc4EnqtdM3vHifKKZhDkaxF8rLu/lP13PAuDuz5xPHuUFwwIDAQAB"
 _dmarc IN     TXT    "v=DMARC1; p=none; rua=mailto:louis@m1-2.ephec-ti.be;"

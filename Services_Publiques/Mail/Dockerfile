@@ -13,8 +13,8 @@ RUN mkdir -p /etc/postfix/ssl/
 RUN mkdir -p /etc/dovecot/ssl/
 RUN apt install certbot -y
 RUN apt install openssl -y
-RUN apt install opendkim-tools -y
 RUN adduser louis
+RUN adduser dmarc
 
 EXPOSE 110
 EXPOSE 143

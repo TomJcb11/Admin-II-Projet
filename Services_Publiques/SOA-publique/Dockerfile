@@ -17,6 +17,7 @@ RUN chown -R bind /var/log/named/
 COPY m1-2.ephec-ti.be /etc/bind/
 COPY named.conf /etc/bind/
 COPY m1-2.ephec-ti.be.signed /etc/bind/
+COPY ./dkim/s1.private /etc/bind/
 
 RUN apt-get install vim nano -y
 
