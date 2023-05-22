@@ -21,3 +21,8 @@ for key in `ls Km1-2.ephec-ti.be*.key`
 do
 echo "\$INCLUDE $key">> m1-2.ephec-ti.be
 done
+
+
+@      IN     TXT    "v=spf1 ip4:51.144.126.228 -all";
+
+_dmarc IN     TXT    "v=DMARC1; p=none; rua=mailto:louis@m1-2.ephec-ti.be;"

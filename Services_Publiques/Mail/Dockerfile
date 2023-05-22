@@ -13,6 +13,8 @@ RUN mkdir -p /etc/postfix/ssl/
 RUN mkdir -p /etc/dovecot/ssl/
 RUN apt install certbot -y
 RUN apt install openssl -y
+RUN apt install opendkim-tools
+RUN adduser louis
 
 EXPOSE 110
 EXPOSE 143
