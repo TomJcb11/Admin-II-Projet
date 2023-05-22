@@ -12,3 +12,12 @@ RUN openssl x509 -req -days 365 -in  /etc/postfix/ssl/mail.m1-2.ephec-ti.be.csr 
 RUN openssl rsa -in /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key -out /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key.nopass
 RUN mv /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key.nopass /etc/postfix/ssl/mail.m1-2.ephec-ti.be.key
 RUN openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out /etc/postfix/ssl/cacert.pem -days 3650 -passout pass:adminii -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=mail.m1-2.ephec-ti.be"
+
+
+dnssec-signzone -A -3 $(head -c 1000 /dev/random | sha1sum | cut -b 1-16) -N INCREMENT -o m1-2.ephec-ti.be -t m1-2.ephec-ti.be
+
+
+for key in `ls Km1-2.ephec-ti.be*.key`
+do
+echo "\$INCLUDE $key">> m1-2.ephec-ti.be
+done
