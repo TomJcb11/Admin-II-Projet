@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   web:
-    container_name: ERP
+    container_name: ERP_interne
     build:
       context: "./Services_interne/ERP"
       dockerfile: Dockerfile
@@ -34,7 +34,7 @@ services:
             ipv4_address : 172.16.0.9
 
   resolver:
-    container_name: Resolver
+    container_name: Resolver_interne
     build:
       context: "./Services_interne/Resolveur"
       dockerfile: Dockerfile
@@ -44,7 +44,7 @@ services:
             ipv4_address : 172.16.0.2
    
   soa:
-    container_name: SOA
+    container_name: SOA_interne
     build:
       context: "./Services_interne/SOA-interne"
       dockerfile: Dockerfile
@@ -56,7 +56,7 @@ services:
     
 
   testpc:
-    container_name: TESTpc
+    container_name: PC
     build:
       context: "./Services_interne/PCtest"
       dockerfile: Dockerfile
@@ -68,7 +68,7 @@ services:
     
 
   mail:
-    container_name: Mail
+    container_name: Mail_interne 
     build:
       context: "./Services_interne/Mail"
       dockerfile: Dockerfile
