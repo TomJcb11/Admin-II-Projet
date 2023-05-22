@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y bind9
 RUN apt-get install -y dnsutils
 RUN apt-get install -y iputils-ping
 RUN apt-get install -y net-tools
-RUN apt-get install opendkim opendkim-tools spamass-milter
+RUN apt-get install -y opendkim opendkim-tools spamass-milter
 # Créer le répertoire des journaux
 RUN mkdir /var/log/named/
 
